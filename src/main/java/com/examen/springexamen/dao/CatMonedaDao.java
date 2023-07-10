@@ -86,10 +86,10 @@ public class CatMonedaDao {
 		return false;
 	}
 	
-	public boolean updateMoneda(MonedaRequest request) {
+	public boolean updateMoneda(MonedaRequest request,String cia, String claveMoneda) {
 		Object params[]= {request.getNumCia(),request.getClaveMoneda(),request.getDescripcion(),
 				request.getSimbolo(),request.getAbreviacion(),request.getMonedaCorriente(),request.getStatus(),
-				request.getNumCia(), request.getClaveMoneda()};
+				cia, claveMoneda};
 		int result=jdbcTemplate.update("UPDATE HU_CAT_MONEDA SET NUM_CIA=?, CLAVE_MONEDA=?, DESCRIPCION=?,SIMBOLO=?,ABREVIACION=?,MONEDA_CORRIENTE=?,STATUS=? WHERE NUM_CIA=? AND CLAVE_MONEDA=?",
 				params);
 		if(result>0) {
